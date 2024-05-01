@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../../app/routes";
 // import selector
+import { topicSlice } from "../features/topics/topicsSlice";
 
 export default function Topics() {
   const topics = {}; // replace this with a call to your selector to select all the topics in state
