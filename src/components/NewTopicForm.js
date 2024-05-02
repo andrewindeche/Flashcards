@@ -4,22 +4,25 @@ import {useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
 import { ALL_ICONS } from "../data/icons";
-// import addTopic
+import { addTopic } from "../features/topics/topicsSlice.js"
 
 export default function NewTopicForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const [icon, setIcon] = useState("");
+  const [icon, setIcon] = useState(ALL_ICONS[0]?.url);
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name.length === 0) {
-      return;
+    if (name && icon) {
+      const newTopic = {
+        id: uuidv4(), 
+        name: name,
+        icon: icon
+      };
+      dispatch(addTopic(newTopic))
+      navigate(ROUTES.topicsRoute());
     }
-
-    // dispatch new topic
-    navigate(ROUTES.topicsRoute());
   };
 
   return (
