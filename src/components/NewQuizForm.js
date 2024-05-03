@@ -20,6 +20,15 @@ export default function NewQuizForm() {
     if (name.length === 0) {
       return;
     }
+    if (!name.trim()) {
+      alert("Please provide a name for the quiz.");
+      return;
+    }
+
+    if (!cards.length) {
+      alert("Please add at least one card to the quiz.");
+      return;
+    }
 
     const cardIds = [];
     cards.forEach((card) => {
