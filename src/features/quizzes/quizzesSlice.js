@@ -8,10 +8,10 @@ export const quizzesSlice = createSlice({
     name: 'quizzes/createQuizzes',
     initialState,
     reducers: {
-        addQuizz: (state,action) => {
+        addQuiz: (state,action) => {
             const { id,name,topicId} = action.payload;
             const newQuiz = { id,name,topicId,cardIds: [] };
-            state.quizzes.id = newQuiz;
+            state.quizzes[id] = newQuiz;
         }
     }
 
@@ -22,5 +22,5 @@ export const quizzesSelector = createSelector(
         (quizzes) => quizzes
 )
 
-export const { addQuizz } = quizzesSlice.actions;
+export const { addQuiz } = quizzesSlice.actions;
 export default quizzesSlice.reducer;
